@@ -1,11 +1,11 @@
 from langchain_community.tools.tavily_search import TavilySearchResults
 from langchain.agents import Tool, AgentExecutor, initialize_agent
-from langchain_anthropic import ChatAnthropic
+from langchain_community.llms import Ollama
 from dotenv import load_dotenv
 load_dotenv()
 
 def get_research_agent():
-    llm = ChatAnthropic(model_name="claude-3-haiku-20240307", temperature=0)
+    llm = Ollama(model="llama2:7b", temperature=0)
     search = TavilySearchResults(max_results=5)
 
     tools = [
